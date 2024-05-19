@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import { greenPlusSign } from '../src/react-icons';
-import { redMinusSign } from '../src/react-icons';
-import { blackСrossSign } from '../src/react-icons';
+import { TiDelete } from 'react-icons/ti';
+import { FaPlusCircle } from "react-icons/fa";
+import { FaMinusCircle } from "react-icons/fa";
+import { FaCircleXmark } from "react-icons/fa6";
 
 const ExpenseItem = ({ id, name, cost }) => {
     const { dispatch, currency } = useContext(AppContext);
@@ -40,9 +41,9 @@ const ExpenseItem = ({ id, name, cost }) => {
         <tr>
             <td>{name}</td>
             <td>{currency}{cost}</td>
-            <td><greenPlusSign size='2.2em' onClick={handleIncrease}>+</greenPlusSign></td>
-            <td><redMinusSign size='2.2em' color="red" onClick={handleDecrease}>-</redMinusSign></td>
-            <td><blackСrossSign size='2.2em' onClick={handleDelete}></blackСrossSign></td>
+            <td><FaPlusCircle color='green' size='2.2em' onClick={handleIncrease}>+</FaPlusCircle></td>
+            <td><FaMinusCircle color='red' size='2.2em' onClick={handleDecrease}>-</FaMinusCircle></td>
+            <td><FaCircleXmark size='2.2em' onClick={handleDelete}></FaCircleXmark></td>
         </tr>
     );
 };
