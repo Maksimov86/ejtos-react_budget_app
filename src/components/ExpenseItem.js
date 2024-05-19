@@ -1,36 +1,48 @@
 import React, { useContext } from 'react';
-import { TiDelete } from 'react-icons/ti';
 import { AppContext } from '../context/AppContext';
+import { greenPlusSign } from '../src/react-icons';
+import { redMinusSign } from '../src/react-icons';
+import { blackСrossSign } from '../src/react-icons';
 
-const ExpenseItem = (props) => {
-    const { dispatch } = useContext(AppContext);
+const ExpenseItem = ({ id, name, cost }) => {
+    const { dispatch, currency } = useContext(AppContext);
 
-    const handleDeleteExpense = () => {
-        dispatch({
-            type: 'DELETE_EXPENSE',
-            payload: props.id,
-        });
-    };
-
-    const increaseAllocation = (name) => {
+    const handleIncrease = () => {
         const expense = {
             name: name,
             cost: 10,
         };
-
         dispatch({
             type: 'ADD_EXPENSE',
-            payload: expense
+            payload: expense,
         });
+    };
 
-    }
+    const handleDecrease = () => {
+        const expense = {
+            name: name,
+            cost: 10,
+        };
+        dispatch({
+            type: 'RED_EXPENSE',
+            payload: expense,
+        });
+    };
+
+    const handleDelete = () => {
+        dispatch({
+            type: 'DELETE_EXPENSE',
+            payload: id,
+        });
+    };
 
     return (
         <tr>
-            <td>{props.name}</td>
-            <td>£{props.cost}</td>
-            <td><button onClick={event=> increaseAllocation(props.name)}>+</button></td>
-            <td><TiDelete size='1.5em' onClick={handleDeleteExpense}></TiDelete></td>
+            <td>{name}</td>
+            <td>{currency}{cost}</td>
+            <td><greenPlusSign size='2.2em' onClick={handleIncrease}>+</greenPlusSign></td>
+            <td><redMinusSign size='2.2em' color="red" onClick={handleDecrease}>-</redMinusSign></td>
+            <td><blackСrossSign size='2.2em' onClick={handleDelete}></blackСrossSign></td>
         </tr>
     );
 };

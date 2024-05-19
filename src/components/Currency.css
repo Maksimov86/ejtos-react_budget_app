@@ -1,0 +1,38 @@
+.currency-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .currency-container::after {
+    content: '▼';
+    color: white;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Убирает влияние на клики */
+  }
+  
+  #Currency {
+    width: 100%;
+    background-color: #93e499;
+    color: white;
+    border-radius: 4px;
+    height: 58px;
+    padding-left: 10px;
+    border: none;
+    appearance: none; /* Убирает стандартные стрелки */
+    outline: none; /* Убирает фокусный обвод */
+  }
+  
+  #Currency option {
+    background-color: #93e499;
+    color: black;
+    border: none;
+  }
+  
+  #Currency option:hover {
+    background-color: white;
+  }
